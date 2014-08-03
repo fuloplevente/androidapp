@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" id="com.coolappz.HTML5Application" version="1.0.0">
+    <name>HTML5Application</name>
+    <description>
+        My first application.
+    </description>
+    <author email="fuloplevente1@gmail.com">
+        Fulop Levente
+    </author>
+    <content src="index.html"/>
+    <access origin="*"/>
+	<plugin name="NetworkStatus" value="org.apache.cordova.NetworkManager" />
+	<plugin name="Storage" value="org.apache.cordova.Storage" />
+</widget>

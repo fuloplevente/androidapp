@@ -4,7 +4,7 @@
  * Compatibility requeriments are marked on each platform depending function
  */
 
-var Device = {
+function Device() {
     
 /*   localStorage
  *   Supported Platforms
@@ -14,30 +14,37 @@ var Device = {
  *   Windows Phone 7
  *   webOS
  */    
-    getLocalStorage: function(key) {
-        return $.parseJSON(window.localStorage.getItem(key));
-    },
-    
-    setLocalStorage: function(key,value) {
-        window.localStorage.setItem(key,JSON.stringify(value));
-    },
-    
-    getSessionStorage: function(key) {
-        return $.parseJSON(window.sessionStorage.getItem(key));
-    },
-    
-    setSessionStorage: function(key,value) {
-        window.sessionStorage.setItem(key,JSON.stringify(value));
-    },
-    
-    isOnline: function() {
-        if(navigator.connection.type !== Connection.NONE)
-        {
-            return true;
-        }
-        else
+
+    this.getLocalStorage = function(key) {
+        if( ! window.localStorage.getItem(key))
         {
             return false;
         }
-    }
-}
+        return $.parseJSON(window.localStorage.getItem(key));
+    };
+    
+    this.setLocalStorage = function(key,value) {
+        window.localStorage.setItem(key,JSON.stringify(value));
+    };
+    
+    this.getSessionStorage = function(key) {
+        return $.parseJSON(window.sessionStorage.getItem(key));
+    };
+    
+    this.setSessionStorage = function(key,value) {
+        window.sessionStorage.setItem(key,JSON.stringify(value));
+    };
+    
+    this.isOnline = function() {
+        //debug in browser mode
+        if(App.debug.Mode)
+        {
+            return App.debug.isOnline;
+        }
+        
+        if( ! navigator.connection.type) return false;
+        
+        return navigator.connection.type !== Connection.NONE;
+    };
+    
+};

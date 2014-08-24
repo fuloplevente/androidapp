@@ -2,9 +2,9 @@ function External() {
     
     //AJAXEnum could be used for AJAX response decoding (100,101,404...)
     this.AJAXEnum = {"NO_RESPONSE" : 0, "RESPONSE" : 1};
-    this.RegistrationEnum = {"USERNAME_RESERVED" : 2, "REGISTRATION_DONE" : 3};
-    this.GETPASSWORD_ADDRESS = "http://localhost/getpassword.php";
-    this.REGISTER_ADDRESS = "http://localhost/register.php";
+    this.RegistrationEnum = {"USERNAME_RESERVED" : 0, "REGISTRATION_DONE" : 1};
+    this.GETPASSWORD_ADDRESS = "http://localhost/androidserver/getpassword.php";
+    this.REGISTER_ADDRESS = "http://localhost/androidserver/register.php";
     
     this.register = function(username,encodedPassword) {
         var result;

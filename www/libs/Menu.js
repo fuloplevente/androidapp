@@ -13,6 +13,9 @@ function Menu() {
         {
             $.ajaxSetup({async:false});
             $("#login").load("view/login/login.html");
+            $("head").append('<link type="text/css" rel="stylesheet" href="view/login/login.css" />');
+            
+            
             $("#LoginButton").click(function(event){
                 window.Login.validateStart(
                         $("#username").val(),
@@ -27,6 +30,10 @@ function Menu() {
             });
             $.ajaxSetup({async:true});
         }
+    };
+    
+    this.triggerLogin = function() {
+        $("#LoginButton").trigger("click");
     };
     
     this.loginFailed = function() {

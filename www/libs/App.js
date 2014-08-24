@@ -73,6 +73,11 @@ var App = {
     
     Controller: function(input) {
         
+        //parameter as default
+        if (typeof input === "undefined" || input === null) { 
+            input = {"type" : null,"value" : null};
+        }
+        
         var credentials = window.Profile.loadCredentials();
         
         if( ! window.Device.isOnline() )
@@ -92,6 +97,26 @@ var App = {
         }
         
         window.Menu.online();
+        
+        
+        if(input.type === this.ControllerInputType.REGISTRATION_RESULT)
+        {
+            if( input.value === External.RegistrationEnum.REGISTRATION_DONE)
+            {
+                alert("Registration done!");
+                Menu.triggerLogin();
+                return;
+            }
+            
+            if( input.value === External.RegistrationEnum.USERNAME_RESERVED)
+            {
+                alert("Registration failed! Username already taken.");
+                return;
+            }
+            
+            alert("Registraion failed!");
+            return;
+        }
         
         if( ! credentials.encodedPassword)
         {
